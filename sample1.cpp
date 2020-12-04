@@ -14,6 +14,9 @@ class ComplexNumber{
 	ComplexNumber operator+(const ComplexNumber& rhs) const {
 		return ComplexNumber(this->_r + rhs._r, this->_i + rhs._i);
 	}
+	ComplexNumber operator*(const double& real) const {
+		return ComplexNumber(this->_r * real, this->_i * real);
+	}
 	friend ostream& operator<<(ostream& out, const ComplexNumber& data);
 	friend basic_stringstream<char>& operator<<(basic_stringstream<char>& out, const ComplexNumber& data);
 };
@@ -30,7 +33,7 @@ basic_stringstream<char>& operator<<(basic_stringstream<char>& out, const Comple
 
 class ComplexNumberTest : public ::testing::Test {
 	protected:
-	ComplexNumber *c_1_1, *c_1_2, *c_2_3;
+	ComplexNumber *c_1_1, *c_1_2, *c_2_3, *c_sample;
 	void SetUp() override{
 		c_1_1 = new ComplexNumber(1, 1);
 #ifdef FAIL_ADD_TEST
@@ -41,6 +44,7 @@ class ComplexNumberTest : public ::testing::Test {
 #ifndef CAUSE_SEG_FAULT
 		c_2_3 = new ComplexNumber(2, 3);
 #endif
+		c_sample = new ComplexNumber(10, 10);
 	}
 	void TearDown() override{
 		delete c_1_1;
@@ -58,6 +62,10 @@ TEST_F(ComplexNumberTest, testEquality){
 
 TEST_F(ComplexNumberTest, testAddition){
 	EXPECT_EQ(*c_1_1 + *c_1_2, *c_2_3);
+}
+
+TEST_F(ComplexNumberTest, testSample){
+	EXPECT_EQ(*c_sample, (*c_1_1) * 10);
 }
 
 int main(int argc, char **argv){
