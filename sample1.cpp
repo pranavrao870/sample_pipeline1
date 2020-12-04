@@ -12,7 +12,7 @@ class ComplexNumber{
 		return (this->_r == rhs._r) && (this->_i == rhs._i);
 	}
 	ComplexNumber operator+(const ComplexNumber& rhs) const {
-		return ComplexNumber(this->_r - rhs._r, this->_i + rhs._i);
+		return ComplexNumber(this->_r + rhs._r, this->_i + rhs._i);
 	}
 	friend ostream& operator<<(ostream& out, const ComplexNumber& data);
 	friend basic_stringstream<char>& operator<<(basic_stringstream<char>& out, const ComplexNumber& data);
