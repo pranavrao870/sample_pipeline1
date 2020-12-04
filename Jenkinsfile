@@ -10,6 +10,8 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
+		sh 'python3 test_all_macros.py'
+		junit 'macro*.xml'
             }
         }
         stage('Deploy') {
