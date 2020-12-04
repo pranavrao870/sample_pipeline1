@@ -34,7 +34,7 @@ class ComplexNumberTest : public ::testing::Test {
 	void SetUp() override{
 		c_1_1 = new ComplexNumber(1, 1);
 #ifdef FAIL_ADD_TEST
-		c_1_2 = new ComplexNumber(1, 2.1);
+		c_1_2 = new ComplexNumber(1, 2);
 #else
 		c_1_2 = new ComplexNumber(1, 2);
 #endif
